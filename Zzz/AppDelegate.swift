@@ -11,16 +11,19 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+
+        NSApplication.sharedApplication().windows.first?.releasedWhenClosed = false
+        NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+    func applicationShouldHandleReopen(sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        
+        if !flag {
+            NSApplication.sharedApplication().windows.first?.makeKeyAndOrderFront(self)
+        }
+        
+        return true
     }
-
-
 }
 

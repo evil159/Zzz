@@ -7,19 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0E628E1D4FA935003E464C /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0E62891D4FA92C003E464C /* GitUpKit.framework */; };
+		FC0E628F1D4FA935003E464C /* GitUpKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC0E62891D4FA92C003E464C /* GitUpKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC2263D81D6A445E00F4CC13 /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2263D71D6A445E00F4CC13 /* CommitCell.swift */; };
+		FC362B461D6B895000A042E0 /* DiffDeltaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC362B451D6B895000A042E0 /* DiffDeltaCell.swift */; };
+		FC362B481D6B940800A042E0 /* DiffHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC362B471D6B940800A042E0 /* DiffHeaderCell.swift */; };
+		FC4085551D5FE1540055CA76 /* RepositoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4085541D5FE1540055CA76 /* RepositoryStorage.swift */; };
+		FC640FE51D4FE20E00B2A856 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0E62941D4FDA3E003E464C /* AppKit.framework */; };
+		FC74A2571D6C6B34007229B8 /* StagingDiffDeltaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC74A2561D6C6B34007229B8 /* StagingDiffDeltaCell.swift */; };
+		FC892E071D57807300847B9B /* DiffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC892E061D57807300847B9B /* DiffViewController.swift */; };
+		FC892E0B1D5782B900847B9B /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC892E0A1D5782B900847B9B /* CommitsViewController.swift */; };
 		FC96B9ED1D24656700921BA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96B9EC1D24656700921BA0 /* AppDelegate.swift */; };
-		FC96B9EF1D24656700921BA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96B9EE1D24656700921BA0 /* ViewController.swift */; };
 		FC96B9F11D24656700921BA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC96B9F01D24656700921BA0 /* Assets.xcassets */; };
 		FC96B9F41D24656700921BA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC96B9F21D24656700921BA0 /* Main.storyboard */; };
+		FCAD42071D74163400A2BCB2 /* CommitMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD42061D74163400A2BCB2 /* CommitMessageCell.swift */; };
+		FCAD420C1D744BA700A2BCB2 /* NSViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD420B1D744BA700A2BCB2 /* NSViewController+Alerts.swift */; };
+		FCB894531D61141600771B5D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB894521D61141600771B5D /* Repository.swift */; };
+		FCC9D8E31D53BE9F00885ACF /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9D8E21D53BE9F00885ACF /* WindowController.swift */; };
+		FCC9D8E61D53C11200885ACF /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9D8E51D53C11200885ACF /* RepositoriesViewController.swift */; };
+		FCD174C31D7DFC7E005228E1 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD174C21D7DFC7E005228E1 /* ColoredView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FC0E62881D4FA92C003E464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E267E1A81B84D6C500BAB377;
+			remoteInfo = "GitUpKit (OSX)";
+		};
+		FC0E628A1D4FA92C003E464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E217531B1B91613300BE234A;
+			remoteInfo = "GitUpKit (iOS)";
+		};
+		FC0E628C1D4FA92C003E464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E2C338C419F8562F00063D95;
+			remoteInfo = Tests;
+		};
+		FC0E62901D4FA935003E464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E267E1A71B84D6C500BAB377;
+			remoteInfo = "GitUpKit (OSX)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FC0E62921D4FA935003E464C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC0E628F1D4FA935003E464C /* GitUpKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitUpKit.xcodeproj; path = GitUpKit/GitUpKit.xcodeproj; sourceTree = "<group>"; };
+		FC0E62931D4FA9CC003E464C /* Zzz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zzz-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC0E62941D4FDA3E003E464C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FC2263D71D6A445E00F4CC13 /* CommitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
+		FC362B451D6B895000A042E0 /* DiffDeltaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffDeltaCell.swift; sourceTree = "<group>"; };
+		FC362B471D6B940800A042E0 /* DiffHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffHeaderCell.swift; sourceTree = "<group>"; };
+		FC4085541D5FE1540055CA76 /* RepositoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryStorage.swift; sourceTree = "<group>"; };
+		FC74A2561D6C6B34007229B8 /* StagingDiffDeltaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StagingDiffDeltaCell.swift; sourceTree = "<group>"; };
+		FC892E061D57807300847B9B /* DiffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffViewController.swift; sourceTree = "<group>"; };
+		FC892E0A1D5782B900847B9B /* CommitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
 		FC96B9E91D24656700921BA0 /* Zzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC96B9EC1D24656700921BA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC96B9EE1D24656700921BA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC96B9F01D24656700921BA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC96B9F31D24656700921BA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC96B9F51D24656700921BA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCAD42061D74163400A2BCB2 /* CommitMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitMessageCell.swift; sourceTree = "<group>"; };
+		FCAD420B1D744BA700A2BCB2 /* NSViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSViewController+Alerts.swift"; sourceTree = "<group>"; };
+		FCB894521D61141600771B5D /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		FCC9D8E21D53BE9F00885ACF /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		FCC9D8E51D53C11200885ACF /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
+		FCD174C21D7DFC7E005228E1 /* ColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,15 +102,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC640FE51D4FE20E00B2A856 /* AppKit.framework in Frameworks */,
+				FC0E628E1D4FA935003E464C /* GitUpKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC0E62821D4FA92C003E464C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC0E62891D4FA92C003E464C /* GitUpKit.framework */,
+				FC0E628B1D4FA92C003E464C /* GitUpKit.framework */,
+				FC0E628D1D4FA92C003E464C /* GitUpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC2263D41D6A444F00F4CC13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC2263D71D6A445E00F4CC13 /* CommitCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC4085511D5FE11D0055CA76 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCB8944F1D61140300771B5D /* Git */,
+				FC4085541D5FE1540055CA76 /* RepositoryStorage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC7398731D646BBD00B3AA0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC362B451D6B895000A042E0 /* DiffDeltaCell.swift */,
+				FC362B471D6B940800A042E0 /* DiffHeaderCell.swift */,
+				FC74A2561D6C6B34007229B8 /* StagingDiffDeltaCell.swift */,
+				FCAD42061D74163400A2BCB2 /* CommitMessageCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC892E051D57806900847B9B /* Commit Details */ = {
+			isa = PBXGroup;
+			children = (
+				FC7398731D646BBD00B3AA0F /* Views */,
+				FC892E061D57807300847B9B /* DiffViewController.swift */,
+			);
+			path = "Commit Details";
+			sourceTree = "<group>";
+		};
+		FC892E091D5782A100847B9B /* Commits */ = {
+			isa = PBXGroup;
+			children = (
+				FC2263D41D6A444F00F4CC13 /* Views */,
+				FC892E0A1D5782B900847B9B /* CommitsViewController.swift */,
+			);
+			path = Commits;
+			sourceTree = "<group>";
+		};
 		FC96B9E01D24656700921BA0 = {
 			isa = PBXGroup;
 			children = (
+				FC0E62941D4FDA3E003E464C /* AppKit.framework */,
+				FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */,
 				FC96B9EB1D24656700921BA0 /* Zzz */,
 				FC96B9EA1D24656700921BA0 /* Products */,
 			);
@@ -52,13 +187,76 @@
 		FC96B9EB1D24656700921BA0 /* Zzz */ = {
 			isa = PBXGroup;
 			children = (
+				FC4085511D5FE11D0055CA76 /* Models */,
+				FCC9D8DE1D53BE9100885ACF /* UI */,
 				FC96B9EC1D24656700921BA0 /* AppDelegate.swift */,
-				FC96B9EE1D24656700921BA0 /* ViewController.swift */,
 				FC96B9F01D24656700921BA0 /* Assets.xcassets */,
 				FC96B9F21D24656700921BA0 /* Main.storyboard */,
 				FC96B9F51D24656700921BA0 /* Info.plist */,
+				FC0E62931D4FA9CC003E464C /* Zzz-Bridging-Header.h */,
 			);
 			path = Zzz;
+			sourceTree = "<group>";
+		};
+		FCA1D42A1D6467BC00DC879A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FCD174BF1D7DFC70005228E1 /* Views */,
+				FCAD420A1D744B6E00A2BCB2 /* Extensions */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		FCAD420A1D744B6E00A2BCB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCAD420B1D744BA700A2BCB2 /* NSViewController+Alerts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCB8944F1D61140300771B5D /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				FCB894521D61141600771B5D /* Repository.swift */,
+			);
+			path = Git;
+			sourceTree = "<group>";
+		};
+		FCC9D8DE1D53BE9100885ACF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1D42A1D6467BC00DC879A /* Shared */,
+				FC892E091D5782A100847B9B /* Commits */,
+				FC892E051D57806900847B9B /* Commit Details */,
+				FCC9D8E41D53C0F800885ACF /* Repo List */,
+				FCC9D8DF1D53BE9100885ACF /* Window */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		FCC9D8DF1D53BE9100885ACF /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				FCC9D8E21D53BE9F00885ACF /* WindowController.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		FCC9D8E41D53C0F800885ACF /* Repo List */ = {
+			isa = PBXGroup;
+			children = (
+				FCC9D8E51D53C11200885ACF /* RepositoriesViewController.swift */,
+			);
+			path = "Repo List";
+			sourceTree = "<group>";
+		};
+		FCD174BF1D7DFC70005228E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCD174C21D7DFC7E005228E1 /* ColoredView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,10 +269,12 @@
 				FC96B9E51D24656700921BA0 /* Sources */,
 				FC96B9E61D24656700921BA0 /* Frameworks */,
 				FC96B9E71D24656700921BA0 /* Resources */,
+				FC0E62921D4FA935003E464C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FC0E62911D4FA935003E464C /* PBXTargetDependency */,
 			);
 			name = Zzz;
 			productName = Zzz;
@@ -107,12 +307,42 @@
 			mainGroup = FC96B9E01D24656700921BA0;
 			productRefGroup = FC96B9EA1D24656700921BA0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FC0E62821D4FA92C003E464C /* Products */;
+					ProjectRef = FC0E62811D4FA92C003E464C /* GitUpKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FC96B9E81D24656700921BA0 /* Zzz */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FC0E62891D4FA92C003E464C /* GitUpKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitUpKit.framework;
+			remoteRef = FC0E62881D4FA92C003E464C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FC0E628B1D4FA92C003E464C /* GitUpKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitUpKit.framework;
+			remoteRef = FC0E628A1D4FA92C003E464C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FC0E628D1D4FA92C003E464C /* GitUpTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GitUpTests.xctest;
+			remoteRef = FC0E628C1D4FA92C003E464C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FC96B9E71D24656700921BA0 /* Resources */ = {
@@ -131,12 +361,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC96B9EF1D24656700921BA0 /* ViewController.swift in Sources */,
+				FCC9D8E61D53C11200885ACF /* RepositoriesViewController.swift in Sources */,
+				FC892E071D57807300847B9B /* DiffViewController.swift in Sources */,
+				FC362B461D6B895000A042E0 /* DiffDeltaCell.swift in Sources */,
+				FCD174C31D7DFC7E005228E1 /* ColoredView.swift in Sources */,
+				FCB894531D61141600771B5D /* Repository.swift in Sources */,
+				FC74A2571D6C6B34007229B8 /* StagingDiffDeltaCell.swift in Sources */,
+				FCC9D8E31D53BE9F00885ACF /* WindowController.swift in Sources */,
+				FCAD42071D74163400A2BCB2 /* CommitMessageCell.swift in Sources */,
+				FC4085551D5FE1540055CA76 /* RepositoryStorage.swift in Sources */,
+				FC362B481D6B940800A042E0 /* DiffHeaderCell.swift in Sources */,
 				FC96B9ED1D24656700921BA0 /* AppDelegate.swift in Sources */,
+				FCAD420C1D744BA700A2BCB2 /* NSViewController+Alerts.swift in Sources */,
+				FC2263D81D6A445E00F4CC13 /* CommitCell.swift in Sources */,
+				FC892E0B1D5782B900847B9B /* CommitsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC0E62911D4FA935003E464C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "GitUpKit (OSX)";
+			targetProxy = FC0E62901D4FA935003E464C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FC96B9F21D24656700921BA0 /* Main.storyboard */ = {
@@ -241,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rol.Zzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zzz/Zzz-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -253,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rol.Zzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zzz/Zzz-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -275,6 +527,7 @@
 				FC96B9FA1D24656700921BA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
