@@ -20,7 +20,7 @@ class CommitCell: NSTableCellView {
         }
     }
     
-    func fillWithCommit(commit: GCHistoryCommit?) {
+    func fillWithCommit(_ commit: GCHistoryCommit?) {
         
         let placeholder = "No data"
         
@@ -29,9 +29,9 @@ class CommitCell: NSTableCellView {
         dateLabel.objectValue = commit?.date ?? placeholder
     }
     
-    private func invalidateView() {
+    fileprivate func invalidateView() {
         
-        let textColor = backgroundStyle == .Light ? NSColor.labelColor() : NSColor.highlightColor()
+        let textColor = backgroundStyle == .light ? NSColor.labelColor : NSColor.highlightColor
 
         authorLabel.textColor = textColor
         messageLabel.textColor = textColor

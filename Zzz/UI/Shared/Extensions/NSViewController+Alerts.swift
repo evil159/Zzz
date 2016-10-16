@@ -16,12 +16,12 @@ extension NSViewController {
         
         alert.setType(type)
         alert.messageText = title
-        alert.addButtonWithTitle("OK")
+        alert.addButton(withTitle: "OK")
         
         if let message = message {
             alert.informativeText = message
         }
 
-        alert.beginSheetModalForWindow(view.window, withCompletionHandler: nil)
+        alert.beginSheetModal(for: view.window, withCompletionHandler: nil)
     }
 }

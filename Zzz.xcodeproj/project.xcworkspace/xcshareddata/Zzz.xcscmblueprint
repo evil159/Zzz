@@ -3,13 +3,15 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : 0,
     "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F" : 0,
-    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : 0
+    "88AD11C9A1E77C725E67E9E0160C2612B56437D7" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "933E06F6-FC91-4230-BE94-04EA11EB0A0B",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : "Zzz\/GitUpKit\/Third-Party\/XLFacility\/",
     "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F" : "Zzz\/GitUpKit\/Third-Party\/libgit2\/",
-    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : "Zzz\/GitUpKit\/Third-Party\/XLFacility\/"
+    "88AD11C9A1E77C725E67E9E0160C2612B56437D7" : "Zzz\/GitUpKit\/Third-Party\/Libraries\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Zzz",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -19,6 +21,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/git-up\/libgit2.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/git-up\/Libraries.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "88AD11C9A1E77C725E67E9E0160C2612B56437D7"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/swisspol\/XLFacility.git",

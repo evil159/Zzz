@@ -21,6 +21,6 @@ class ColoredView: NSView {
     }
     
     override func updateLayer() {
-        layer?.backgroundColor = backgroundColor?.CGColor
+        layer?.backgroundColor = backgroundColor?.cgColor
     }
 }

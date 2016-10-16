@@ -11,11 +11,11 @@ import Foundation
 class Repository: GCLiveRepository {
     
     var name: String {
-        let components = repositoryPath.componentsSeparatedByString("/")
+        let components = repositoryPath.components(separatedBy: "/")
         return components.count > 1 ? components[components.count - 2] : repositoryPath
     }
     
     override class func historySorting() -> GCHistorySorting {
-        return .ReverseChronological
+        return .reverseChronological
     }
 }

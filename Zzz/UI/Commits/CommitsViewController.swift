@@ -10,10 +10,10 @@ import Cocoa
 import AppKit
 
 protocol CommitsViewControllerDelegate {
-    func commitsViewController(commitsViewController: CommitsViewController,
+    func commitsViewController(_ commitsViewController: CommitsViewController,
                                didSelectCommit commit: GCHistoryCommit,
                                                diff: GCDiff)
-    func commitsViewController(commitsViewController: CommitsViewController,
+    func commitsViewController(_ commitsViewController: CommitsViewController,
                                didSelectStaging repo: GCLiveRepository)
 }
 
@@ -24,13 +24,13 @@ class CommitsViewController: NSViewController {
     var repo: GCLiveRepository? {
         didSet (oldRepo) {
             
-            oldRepo?.statusMode = .Disabled
-            repo?.statusMode = .Unified
+            oldRepo?.statusMode = .disabled
+            repo?.statusMode = .unified
 
             reloadRepository(repo)
         }
     }
-    private var history: GCHistory?
+    fileprivate var history: GCHistory?
     
     @IBOutlet var tableView: NSTableView!
     
@@ -43,13 +43,13 @@ class CommitsViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        repo?.statusMode = .Unified
+        repo?.statusMode = .unified
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear()
         
-        repo?.statusMode = .Disabled;
+        repo?.statusMode = .disabled;
     }
 }
 
@@ -58,7 +58,7 @@ private extension CommitsViewController {
     
     static let cellHeight = CGFloat(46.0)
     
-    func reloadRepository(repo: GCLiveRepository?) {
+    func reloadRepository(_ repo: GCLiveRepository?) {
         
         defer {
             tableView.reloadData()
@@ -71,9 +71,9 @@ private extension CommitsViewController {
         repo.delegate = self
         
         do {
-            history = try repo.loadHistoryUsingSorting(.ReverseChronological)
+            history = try repo.loadHistory(using: .reverseChronological)
         } catch {
-            presentAlert(withType: .Stop,
+            presentAlert(withType: .stop,
                          title: "Failed to load the latest history",
                          message: "Backing up to last known history")
             history = repo.history
@@ -83,36 +83,36 @@ private extension CommitsViewController {
 
 extension CommitsViewController: GCLiveRepositoryDelegate {
     
-    func repositoryDidChange(repository: GCRepository!) {
+    func repositoryDidChange(_ repository: GCRepository!) {
         print("repo did change")
     }
     
-    func repositoryDidUpdateState(repository: GCLiveRepository!) {
+    func repositoryDidUpdateState(_ repository: GCLiveRepository!) {
         print("repo update state")
     }
     
-    func repositoryDidUpdateStatus(repository: GCLiveRepository!) {
+    func repositoryDidUpdateStatus(_ repository: GCLiveRepository!) {
         print("repo update status")
     }
     
-    func repositoryDidUpdateHistory(repository: GCLiveRepository!) {
+    func repositoryDidUpdateHistory(_ repository: GCLiveRepository!) {
         
         reloadRepository(repo)
         print("repo update history")
     }
     
-    func repositoryWorkingDirectoryDidChange(repository: GCRepository!) {
+    func repositoryWorkingDirectoryDidChange(_ repository: GCRepository!) {
 
         print("repo working dir changed")
         
-        tableView.reloadDataForRowIndexes(NSIndexSet(index: 0), columnIndexes: NSIndexSet(index: 0))
+        tableView.reloadData(forRowIndexes: IndexSet(integer: 0), columnIndexes: IndexSet(integer: 0))
     }
 }
 
 // MARK: NSTableViewDataSource
 extension CommitsViewController: NSTableViewDataSource {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         
         guard let count = history?.allCommits.count else {
             return 0
@@ -125,10 +125,10 @@ extension CommitsViewController: NSTableViewDataSource {
 // MARK: NSTableViewDelegate
 extension CommitsViewController: NSTabViewDelegate {
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        let cellIdentifier = (row == 0) ? "indexCell" : String(CommitCell)
-        let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil)
+        let cellIdentifier = (row == 0) ? "indexCell" : String(describing: CommitCell.self)
+        let cell = tableView.make(withIdentifier: cellIdentifier, owner: nil)
         
         if let cell = cell as? CommitCell,
             let commit = history?.allCommits[row - 1] as? GCHistoryCommit {
@@ -147,7 +147,7 @@ extension CommitsViewController: NSTabViewDelegate {
         return cell
     }
     
-    func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         
         guard let history = history, let repo = repo else {
             return false
@@ -165,9 +165,9 @@ extension CommitsViewController: NSTabViewDelegate {
         
         do {
             diff = try repo.diffCommit(commit,
-                                        withCommit:commit.parents.first as? GCCommit,
+                                        with:commit.parents.first as? GCCommit,
                                         filePattern: nil,
-                                        options: .FindRenames,
+                                        options: .findRenames,
                                         maxInterHunkLines: 0,
                                         maxContextLines: 0)
         } catch {

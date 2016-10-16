@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DiffViewControllerDelegate {
-    func diffViewControllerRequestsCommit(diffViewController: DiffViewController, message: String);
+    func diffViewControllerRequestsCommit(_ diffViewController: DiffViewController, message: String);
 }
 
 class DiffViewController: NSViewController {
@@ -20,27 +20,27 @@ class DiffViewController: NSViewController {
     var delegate: DiffViewControllerDelegate?
     var messageCell: CommitMessageCell?
     
-    private var deltas: [GCDiffDelta] = []
-    private var commit: GCHistoryCommit?
-    private var stagingRepo: GCLiveRepository?
-    private var inStagingMode: Bool {
+    fileprivate var deltas: [GCDiffDelta] = []
+    fileprivate var commit: GCHistoryCommit?
+    fileprivate var stagingRepo: GCLiveRepository?
+    fileprivate var inStagingMode: Bool {
         return (stagingRepo != nil)
     }
-    private var hasCommit: Bool {
+    fileprivate var hasCommit: Bool {
         return (commit != nil)
     }
     
-    func load(commit: GCHistoryCommit?, diff: GCDiff?) {
+    func load(_ commit: GCHistoryCommit?, diff: GCDiff?) {
         
         deltas = diff?.deltas as? [GCDiffDelta] ?? []
         self.commit = commit
-        emptyTextLabel.hidden = !deltas.isEmpty
+        emptyTextLabel.isHidden = !deltas.isEmpty
         stagingRepo = nil
         
         tableView.reloadData()
     }
     
-    func showStaging(repo: GCLiveRepository) {
+    func showStaging(_ repo: GCLiveRepository) {
         stagingRepo = repo
         deltas = repo.unifiedStatus.deltas as? [GCDiffDelta] ?? []
         
@@ -51,31 +51,31 @@ class DiffViewController: NSViewController {
 // MARK: Actions
 extension DiffViewController {
     
-    @IBAction func stageCheckboxPressed(sender: NSButton) {
+    @IBAction func stageCheckboxPressed(_ sender: NSButton) {
         
         let row = sender.tag;
         let delta = deltas[row]
         let repo = delta.diff.repository as? GCLiveRepository
-        let fileExists = NSFileManager.defaultManager().fileExistsAtPath(delta.canonicalPath)
+        let fileExists = FileManager.default.fileExists(atPath: delta.canonicalPath)
 
         do {
             if fileExists {
                 
-                try repo?.addFileToIndex(delta.canonicalPath)
+                try repo?.addFile(toIndex: delta.canonicalPath)
             } else {
-                try repo?.resetFileInIndexToHEAD(delta.canonicalPath)
+                try repo?.resetFileInIndex(toHEAD: delta.canonicalPath)
             }
             
             sender.state = fileExists ? NSOnState : NSOffState
-            repo?.notifyRepositoryChanged()
+            repo?.notifyChanged()
         } catch {
             NSApp.presentError(error as NSError)
         }
     }
     
-    @IBAction func commitButtonPressed(sender: NSButton) {
+    @IBAction func commitButtonPressed(_ sender: NSButton) {
         
-        guard let message = messageCell?.messageTextView.string where message.characters.count > 0 else {
+        guard let message = messageCell?.messageTextView.string , message.characters.count > 0 else {
             return
         }
         
@@ -86,7 +86,7 @@ extension DiffViewController {
 // MARK: NSTableViewDataSource
 extension DiffViewController: NSTableViewDataSource {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         
         if let repo = stagingRepo { // staging mode
             return repo.unifiedStatus.deltas.count
@@ -100,15 +100,15 @@ extension DiffViewController: NSTableViewDataSource {
 extension DiffViewController: NSTableViewDelegate {
     
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        var identifier = (row == 0) ? String(CommitMessageCell) : String(StagingDiffDeltaCell)
+        var identifier = (row == 0) ? String(describing: CommitMessageCell.self) : String(describing: StagingDiffDeltaCell.self)
         
         if !inStagingMode {
-            identifier = (row == 0) ? String(DiffHeaderCell) : String(DiffDeltaCell)
+            identifier = (row == 0) ? String(describing: DiffHeaderCell.self) : String(describing: DiffDeltaCell.self)
         }
         
-        let cell = tableView.makeViewWithIdentifier(identifier, owner: nil)
+        let cell = tableView.make(withIdentifier: identifier, owner: nil)
         
         switch cell {
         case let cell as DiffHeaderCell:
@@ -127,11 +127,11 @@ extension DiffViewController: NSTableViewDelegate {
         return cell
     }
     
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return row == 0 ? 94.0 : 17.0
     }
     
-    func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return row != 0
     }
 }

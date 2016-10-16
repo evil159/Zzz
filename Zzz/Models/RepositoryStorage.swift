@@ -10,11 +10,11 @@ import Foundation
 
 class RepositoryStorage {
     
-    enum RepoStorageError: ErrorType {
-        case AlreadyExists
+    enum RepoStorageError: Error {
+        case alreadyExists
     }
     
-    private static let repositoriesKey = "com.rol.zzz.RepositoriesKey"
+    fileprivate static let repositoriesKey = "com.rol.zzz.RepositoriesKey1"
     
     static func repositories() -> [Repository] {
         
@@ -35,7 +35,7 @@ class RepositoryStorage {
         return result
     }
 
-    static func addRepository(path: String) throws -> [Repository] {
+    static func addRepository(_ path: String) throws -> [Repository] {
      
         try validatePath(path)
         
@@ -49,37 +49,38 @@ class RepositoryStorage {
         return repos
     }
 
-    private static func repository(from path: String) throws -> Repository {
+    fileprivate static func repository(from path: String) throws -> Repository {
+
         
         return try Repository(existingLocalRepository: path)
     }
     
-    private static func savedRepositoriesPaths() -> [String] {
+    fileprivate static func savedRepositoriesPaths() -> [String] {
         
-        guard let paths = NSUserDefaults.standardUserDefaults().arrayForKey(repositoriesKey) as? [String] else {
+        guard let paths = UserDefaults.standard.array(forKey: repositoriesKey) as? [String] else {
             return []
         }
 
         return paths;
     }
     
-    private static func validatePath(path: String) throws {
+    fileprivate static func validatePath(_ path: String) throws {
         
         for repoPath in savedRepositoriesPaths() {
 
             if repoPath == path {
-                throw RepoStorageError.AlreadyExists
+                throw RepoStorageError.alreadyExists
             }
         }
     }
     
-    private static func saveRepositoryPath(path: String) {
+    fileprivate static func saveRepositoryPath(_ path: String) {
         
         var paths = savedRepositoriesPaths()
         
         paths.append(path)
         
-        NSUserDefaults.standardUserDefaults().setObject(paths, forKey: repositoriesKey)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(paths, forKey: repositoriesKey)
+        UserDefaults.standard.synchronize()
     }
 }

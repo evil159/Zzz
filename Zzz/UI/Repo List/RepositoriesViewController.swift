@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RepositoriesViewControllerDelegate {
-    func repositoriesViewController(repoViewController: RepositoriesViewController, didSelectRepo repo: GCLiveRepository)
+    func repositoriesViewController(_ repoViewController: RepositoriesViewController, didSelectRepo repo: GCLiveRepository)
 }
 
 class RepositoriesViewController: NSViewController {
@@ -22,9 +22,9 @@ class RepositoriesViewController: NSViewController {
             reloadData(repos)
         }
     }
-    private let repositoryGroup = RepositoryGroup()
+    fileprivate let repositoryGroup = RepositoryGroup()
     
-    func reloadData(repos: [Repository]) {
+    func reloadData(_ repos: [Repository]) {
         
         repositoryGroup.childred = repos
         
@@ -40,7 +40,7 @@ private class RepositoryGroup {
 // MARK: NSOutlineViewDataSource
 extension RepositoriesViewController: NSOutlineViewDataSource {
     
-    func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if let group = item as? RepositoryGroup {
             return group.childred.count
         }
@@ -48,7 +48,7 @@ extension RepositoriesViewController: NSOutlineViewDataSource {
         return 1
     }
     
-    func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let group = item as? RepositoryGroup {
             return group.childred[index]
         }
@@ -56,7 +56,7 @@ extension RepositoriesViewController: NSOutlineViewDataSource {
         return repositoryGroup
     }
     
-    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         if let group = item as? RepositoryGroup {
             return group.childred.count > 0
         }
@@ -68,13 +68,13 @@ extension RepositoriesViewController: NSOutlineViewDataSource {
 // MARK: NSOutlineViewDelegate
 extension RepositoriesViewController: NSOutlineViewDelegate {
     
-    func outlineView(outlineView: NSOutlineView, isGroupItem item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         return item is RepositoryGroup;
     }
     
-    func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-        guard let cell = outlineView.makeViewWithIdentifier("RepoCell", owner: nil) as? NSTableCellView else {
+        guard let cell = outlineView.make(withIdentifier: "RepoCell", owner: nil) as? NSTableCellView else {
             return nil
         }
         
@@ -90,7 +90,7 @@ extension RepositoriesViewController: NSOutlineViewDelegate {
     }
     
     
-    func outlineView(outlineView: NSOutlineView, shouldSelectItem item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         
         guard let repo = item as? GCLiveRepository else {
             return false

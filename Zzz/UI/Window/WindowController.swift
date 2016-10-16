@@ -20,20 +20,20 @@ class WindowController: NSWindowController {
 // MARK: Actions
 extension WindowController {
     
-    @IBAction func addButtonPressed(button: NSView) {
+    @IBAction func addButtonPressed(_ button: NSView) {
         
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canCreateDirectories = true
         panel.resolvesAliases = true
         panel.worksWhenModal = true
-        panel.beginSheetModalForWindow(window!, completionHandler:{ resultCode in
+        panel.beginSheetModal(for: window!, completionHandler:{ resultCode in
             
             guard resultCode == NSFileHandlingPanelOKButton else {
                 return
             }
             
-            guard let url = panel.URLs.first else {
+            guard let url = panel.urls.first else {
                 return
             }
             
@@ -69,11 +69,11 @@ private extension WindowController {
             frame.size = NSSize(width: 1050, height: 650)
             window.setFrame(frame, display: true)
             
-            window.titleVisibility = .Hidden
+            window.titleVisibility = .hidden
         }
 
-        splitVC?.splitView.setPosition(150, ofDividerAtIndex: 0)
-        splitVC?.splitView.setPosition(240, ofDividerAtIndex: 1)
+        splitVC?.splitView.setPosition(150, ofDividerAt: 0)
+        splitVC?.splitView.setPosition(240, ofDividerAt: 1)
         
         reposVC?.delegate = self
         commitsVC?.delegate = self
@@ -82,7 +82,7 @@ private extension WindowController {
         reposVC?.repos = RepositoryStorage.repositories()
     }
     
-    func repositoryUrlSelected(url: NSURL) {
+    func repositoryUrlSelected(_ url: URL) {
         
         var err: NSError?
         var repos: [Repository]?
@@ -93,14 +93,9 @@ private extension WindowController {
             }
         }
         
-        guard let path = url.path else {
-            err = NSError(domain: "com.rol.zzz.Repos", code: 88, userInfo: [NSLocalizedDescriptionKey : "Failed to handle repository path"])
-            return
-        }
-        
         do {
-            repos = try RepositoryStorage.addRepository(path)
-        } catch RepositoryStorage.RepoStorageError.AlreadyExists {
+            repos = try RepositoryStorage.addRepository(url.path)
+        } catch RepositoryStorage.RepoStorageError.alreadyExists {
             err = NSError(domain: "com.rol.zzz.Repos", code: 89, userInfo: [NSLocalizedDescriptionKey : "Repository already added"])
             return
         } catch {
@@ -115,7 +110,7 @@ private extension WindowController {
 // MARK: RepositoriesViewControllerDelegate
 extension WindowController: RepositoriesViewControllerDelegate {
     
-    func repositoriesViewController(repoViewController: RepositoriesViewController, didSelectRepo repo: GCLiveRepository) {
+    func repositoriesViewController(_ repoViewController: RepositoriesViewController, didSelectRepo repo: GCLiveRepository) {
         
         commitDetailsVC?.load(nil, diff: nil) // clear commit details
         commitsVC?.repo = repo
@@ -125,12 +120,12 @@ extension WindowController: RepositoriesViewControllerDelegate {
 // MARK: CommitsViewControllerDelegate
 extension WindowController: CommitsViewControllerDelegate {
     
-    func commitsViewController(commitsViewController: CommitsViewController, didSelectCommit commit: GCHistoryCommit, diff: GCDiff) {
+    func commitsViewController(_ commitsViewController: CommitsViewController, didSelectCommit commit: GCHistoryCommit, diff: GCDiff) {
         
         commitDetailsVC?.load(commit, diff: diff)
     }
     
-    func commitsViewController(commitsViewController: CommitsViewController, didSelectStaging repo: GCLiveRepository) {
+    func commitsViewController(_ commitsViewController: CommitsViewController, didSelectStaging repo: GCLiveRepository) {
         commitDetailsVC?.showStaging(repo)
     }
 }
@@ -138,10 +133,10 @@ extension WindowController: CommitsViewControllerDelegate {
 // MARK: DiffViewControllerDelegate
 extension WindowController: DiffViewControllerDelegate {
     
-    func diffViewControllerRequestsCommit(diffViewController: DiffViewController, message: String) {
+    func diffViewControllerRequestsCommit(_ diffViewController: DiffViewController, message: String) {
         
         do {
-            try commitsVC?.repo?.createCommitFromHEADWithMessage(message)
+            try commitsVC?.repo?.createCommitFromHEAD(withMessage: message)
         } catch {
             NSApp.presentError(NSError(domain: "domain", code: 88, userInfo: [NSLocalizedDescriptionKey : "Commit error"]))
         }

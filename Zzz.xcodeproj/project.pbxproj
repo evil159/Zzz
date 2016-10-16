@@ -293,6 +293,7 @@
 				TargetAttributes = {
 					FC96B9E81D24656700921BA0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -492,6 +493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rol.Zzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Zzz/Zzz-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -505,6 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rol.Zzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Zzz/Zzz-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

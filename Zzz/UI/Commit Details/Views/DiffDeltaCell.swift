@@ -25,27 +25,27 @@ private extension GCDiffDelta {
     
     dynamic var changeDescription: String {
         switch change {
-        case .Unmodified:
+        case .unmodified:
             return "Unmodified"
-        case .Ignored:
+        case .ignored:
             return "Ignored"
-        case .Untracked:
+        case .untracked:
             return "Untracked"
-        case .Unreadable:
+        case .unreadable:
             return "Unreadable"
-        case .Added:
+        case .added:
             return "Added"
-        case .Deleted:
+        case .deleted:
             return "Deleted"
-        case .Modified:
+        case .modified:
             return "Modified"
-        case .Renamed:
+        case .renamed:
             return "Renamed"
-        case .Copied:
+        case .copied:
             return "Copied"
-        case .TypeChanged:
+        case .typeChanged:
             return "TypeChanged"
-        case .Conflicted:
+        case .conflicted:
             return "Conflicted"
         }
     }

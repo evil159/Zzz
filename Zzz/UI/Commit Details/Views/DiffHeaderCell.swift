@@ -29,16 +29,16 @@ class DiffHeaderCell: NSTableCellView {
         initialize()
     }
     
-    private func initialize() {
-        separatorView.backgroundColor = NSColor.windowFrameColor()
+    fileprivate func initialize() {
+        separatorView.backgroundColor = NSColor.windowFrameColor
     }
     
-    private func reloadData(commit: GCHistoryCommit?) {
+    fileprivate func reloadData(_ commit: GCHistoryCommit?) {
         
         let parent = commit?.parents.first as? GCHistoryCommit
         
-        hashLabel.stringValue = commit?.SHA1 ?? ""
-        parentHashLabel.stringValue = parent?.SHA1 ?? ""
+        hashLabel.stringValue = commit?.sha1 ?? ""
+        parentHashLabel.stringValue = parent?.sha1 ?? ""
         dateLabel.objectValue = commit?.date
         authorLabel.stringValue = commit?.author ?? ""
     }
